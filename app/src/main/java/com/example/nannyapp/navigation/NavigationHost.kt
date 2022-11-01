@@ -13,6 +13,8 @@ import com.example.nannyapp.presentation.screens.Panales
 import com.example.nannyapp.presentation.screens.Siestas
 import com.example.nannyapp.presentation.screens.login.LoginScreen
 import com.example.nannyapp.presentation.screens.login.LoginViewModel
+import com.example.nannyapp.presentation.screens.registration.RegisterViewModel
+import com.example.nannyapp.presentation.screens.registration.RegistrationScreen
 
 @Composable
 fun NavigationHost(
@@ -40,7 +42,7 @@ fun NavigationHost(
             if (viewModel.state.value.successLogin) {
                 LaunchedEffect(key1 = Unit) {
                     navController.navigate(
-                        Destinations.Home.route + "/$email" + "/$password"
+                        Destinations.Alimentos.route
                     ) {
                         popUpTo(Destinations.Login.route) {
                             inclusive = true
@@ -59,7 +61,18 @@ fun NavigationHost(
             }
         }
 
-        //composable(Panales.route){
+        composable(Destinations.Register.route){
+            val viewModel: RegisterViewModel = hiltViewModel()
+
+            RegistrationScreen(
+                state = viewModel.state.value,
+                onRegister = viewModel::register,
+                onBack = {
+                    navController.popBackStack()
+                },
+                onDismissDialog = viewModel::hideErrorDialog
+            )
+        }
 
     }
 }
