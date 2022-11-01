@@ -1,9 +1,5 @@
 package com.example.nannyapp.navigation
 
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
 import com.example.nannyapp.R
 
 sealed class Destinations(
@@ -11,7 +7,7 @@ sealed class Destinations(
     val title: String,
     val icon: Int,
 ) {
-    object Alimentos : Destinations("alimentos", "Alimentos", R.drawable.biberon, emptyList())
+    object Alimentos : Destinations("alimentos", "Alimentos", R.drawable.biberon)
     object Otros : Destinations("otros", "Otros", R.drawable.otros) {
         fun createRoute(newText: String) = "otros/?newText={newText}=$newText"
     }

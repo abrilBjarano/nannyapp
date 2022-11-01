@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NannyApp</string>
+    <string name="error_input_empty">Los campos no deben de estár vacios</string>
+    <string name="error_not_a_valid_email">Ingresa un mail valido</string>
+    <string name="error_not_a_valid_phone_number">Ingresa un número de teléfono valido</string>
+    <string name="error_incorrectly_repeated_password">Las contraseñas no coinciden</string>
+    <string name="error_invalid_credentials">Correo o contraseña incorrectos</string>
+    <string name="success_registration">Registrado exitosamente</string>
+    <string name="success_login">Logueado correctamente</string>
+    <string name="error_unknown">Ocurrió un error desconocido</string>
 </resources>
