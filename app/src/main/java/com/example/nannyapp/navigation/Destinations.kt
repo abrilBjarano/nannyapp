@@ -12,13 +12,13 @@ sealed class Destinations(
     val icon: Int,
     val arguments: List<NamedNavArgument>
 ) {
-    object Alimentos : Destinations("alimentos", "Alimentos", R.drawable.biberon)
-    object Otros : Destinations("otros", "Otros", R.drawable.otros) {
+    object Alimentos : Destinations("alimentos", "Alimentos", R.drawable.biberon, emptyList())
+    object Otros : Destinations("otros", "Otros", R.drawable.otros, emptyList()) {
         fun createRoute(newText: String) = "otros/?newText={newText}=$newText"
     }
 
-    object Panales : Destinations("panales", "Panales", R.drawable.panal)
-    object Siestas : Destinations("siestas", "Siestas", R.drawable.siesta)
+    object Panales : Destinations("panales", "Panales", R.drawable.panal, emptyList())
+    object Siestas : Destinations("siestas", "Siestas", R.drawable.siesta, emptyList())
     object Home : Destinations(
         route = "home",
         arguments = listOf(
