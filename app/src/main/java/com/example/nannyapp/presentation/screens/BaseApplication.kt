@@ -1,4 +1,4 @@
-package com.example.nannyapp
+package com.example.nannyapp.presentation.screens
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

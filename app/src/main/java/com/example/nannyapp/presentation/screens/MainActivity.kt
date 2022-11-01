@@ -1,4 +1,4 @@
-package com.example.nannyapp
+package com.example.nannyapp.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -41,28 +41,30 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NannyAppTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
-//                ) {
-//                    MainScreen()
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    MainScreen()
+                }
+
+//                val navController = rememberNavController()
+//
+//                BoxWithConstraints {
+//                    AnimatedNavHost(
+//                        navController = navController,
+//                        startDestination = Destinations.Login.route
+//                    ){
+//                        addLogin(navController)
+//
+//                        addRegister(navController)
+//
+//                        addHome()
+//                    }
 //                }
 
-                val navController = rememberAnimatedNavController()
 
-                BoxWithConstraints {
-                    AnimatedNavHost(
-                        navController = navController,
-                        startDestination = Destinations.Login.route
-                    ) {
-                        addLogin(navController)
-
-                        addRegister(navController)
-
-                        addHome()
-                    }
-                }
             }
         }
     }
@@ -99,30 +101,7 @@ fun NavGraphBuilder.addLogin(
             )
         }
     ) {
-        val viewModel: LoginViewModel = hiltViewModel()
-        val email = viewModel.state.value.email
-        val password = viewModel.state.value.password
 
-        if (viewModel.state.value.successLogin) {
-            LaunchedEffect(key1 = Unit) {
-                navController.navigate(
-                    Destinations.Home.route + "/$email" + "/$password"
-                ) {
-                    popUpTo(Destinations.Login.route) {
-                        inclusive = true
-                    }
-                }
-            }
-        } else {
-            LoginScreen(
-                state = viewModel.state.value,
-                onLogin = viewModel::login,
-                onNavigateToRegister = {
-                    navController.navigate(Destinations.Register.route)
-                },
-                onDismissDialog = viewModel::hideErrorDialog
-            )
-        }
     }
 }
 
@@ -168,16 +147,6 @@ fun NavGraphBuilder.addRegister(
             onDismissDialog = viewModel::hideErrorDialog
         )
     }
-}
-
-@ExperimentalAnimationApi
-fun NavGraphBuilder.addHome() {
-    composable(
-        Destinations.Alimentos.route
-    ) {
-        MainScreen()
-    }
-
 }
 
 @Composable

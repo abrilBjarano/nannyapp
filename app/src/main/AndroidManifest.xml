@@ -4,7 +4,7 @@
     package="com.example.nannyapp">
 
     <application
-        android:name=".BaseApplication"
+        android:name=".presentation.screens.BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
