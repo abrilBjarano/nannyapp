@@ -4,10 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -17,21 +13,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.nannyapp.navigation.Destinations
 import com.example.nannyapp.navigation.NavigationHost
 import com.example.nannyapp.presentation.components.BottomNavigationBar
 import com.example.nannyapp.presentation.screens.login.LoginScreen
 import com.example.nannyapp.presentation.screens.login.LoginViewModel
-import com.example.nannyapp.presentation.screens.registration.RegisterViewModel
-import com.example.nannyapp.presentation.screens.registration.RegistrationScreen
 import com.example.nannyapp.ui.theme.NannyAppTheme
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalAnimationApi
@@ -48,104 +36,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MainScreen()
                 }
-
-//                val navController = rememberNavController()
-//
-//                BoxWithConstraints {
-//                    AnimatedNavHost(
-//                        navController = navController,
-//                        startDestination = Destinations.Login.route
-//                    ){
-//                        addLogin(navController)
-//
-//                        addRegister(navController)
-//
-//                        addHome()
-//                    }
-//                }
-
-
             }
         }
-    }
-}
-
-@ExperimentalAnimationApi
-fun NavGraphBuilder.addLogin(
-    navController: NavHostController
-) {
-    composable(
-        route = Destinations.Login.route,
-        enterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { 1000 },
-                animationSpec = tween(500)
-            )
-        },
-        exitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { -1000 },
-                animationSpec = tween(500)
-            )
-        },
-        popEnterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { -1000 },
-                animationSpec = tween(500)
-            )
-        },
-        popExitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { 1000 },
-                animationSpec = tween(500)
-            )
-        }
-    ) {
-
-    }
-}
-
-@ExperimentalAnimationApi
-fun NavGraphBuilder.addRegister(
-    navController: NavHostController
-) {
-    composable(
-        route = Destinations.Register.route,
-        enterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { 1000 },
-                animationSpec = tween(500)
-            )
-        },
-        exitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { -1000 },
-                animationSpec = tween(500)
-            )
-        },
-        popEnterTransition = { _, _ ->
-            slideInHorizontally(
-                initialOffsetX = { -1000 },
-                animationSpec = tween(500)
-            )
-        },
-        popExitTransition = { _, _ ->
-            slideOutHorizontally(
-                targetOffsetX = { 1000 },
-                animationSpec = tween(500)
-            )
-        }
-    ) {
-        val viewModel: RegisterViewModel = hiltViewModel()
-
-        RegistrationScreen(
-            state = viewModel.state.value,
-            onRegister = viewModel::register,
-            onBack = {
-                navController.popBackStack()
-            },
-            onDismissDialog = viewModel::hideErrorDialog
-        )
     }
 }
 

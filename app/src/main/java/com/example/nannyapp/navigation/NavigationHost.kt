@@ -1,5 +1,6 @@
 package com.example.nannyapp.navigation
 
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -7,10 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.nannyapp.presentation.screens.Alimentos
-import com.example.nannyapp.presentation.screens.Otros
-import com.example.nannyapp.presentation.screens.Panales
-import com.example.nannyapp.presentation.screens.Siestas
+import com.example.nannyapp.presentation.components.BottomNavigationBar
+import com.example.nannyapp.presentation.screens.*
 import com.example.nannyapp.presentation.screens.login.LoginScreen
 import com.example.nannyapp.presentation.screens.login.LoginViewModel
 import com.example.nannyapp.presentation.screens.registration.RegisterViewModel
@@ -34,10 +33,8 @@ fun NavigationHost(
         composable(Destinations.Siestas.route){
             Siestas()
         }
-        composable(Destinations.Login.route){
+        composable(Destinations.Login.route) {
             val viewModel: LoginViewModel = hiltViewModel()
-            val email = viewModel.state.value.email
-            val password = viewModel.state.value.password
 
             if (viewModel.state.value.successLogin) {
                 LaunchedEffect(key1 = Unit) {
@@ -60,7 +57,6 @@ fun NavigationHost(
                 )
             }
         }
-
         composable(Destinations.Register.route){
             val viewModel: RegisterViewModel = hiltViewModel()
 
@@ -72,6 +68,9 @@ fun NavigationHost(
                 },
                 onDismissDialog = viewModel::hideErrorDialog
             )
+        }
+        composable(Destinations.Home.route){
+            HomeScreen()
         }
 
     }
