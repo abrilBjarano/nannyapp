@@ -19,7 +19,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.nannyapp.R
+import com.example.nannyapp.navigation.Destinations
+import com.example.nannyapp.presentation.components.BottomNavigationBar
 import com.example.nannyapp.ui.theme.*
 
 
@@ -41,6 +44,7 @@ class HomeScreen: ComponentActivity(){
 }
 @Composable
 fun vistaHome(){
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         topBarHome()
         Divider(color = Color.Transparent, thickness = 1.dp)

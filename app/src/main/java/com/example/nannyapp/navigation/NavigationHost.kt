@@ -19,27 +19,70 @@ import com.example.nannyapp.presentation.screens.registration.RegistrationScreen
 fun NavigationHost(
     navController: NavHostController
 ){
-
     NavHost(navController = navController, startDestination = Destinations.Login.route){
+        val navigationItems = listOf(
+            Destinations.Alimentos,
+            Destinations.Panales,
+            Destinations.Siestas,
+            Destinations.Otros,
+            Destinations.Home
+        )
+
         composable(Destinations.Alimentos.route){
-            Alimentos()
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        navController = navController, items = navigationItems
+                    )
+                }
+            ) {
+                Alimentos()
+            }
         }
+
         composable(Destinations.Otros.route){
-            Otros()
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        navController = navController, items = navigationItems
+                    )
+                }
+            ) {
+                Otros()
+            }
         }
+
         composable(Destinations.Panales.route){
-            Panales()
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        navController = navController, items = navigationItems
+                    )
+                }
+            ) {
+                Panales()
+            }
         }
+
         composable(Destinations.Siestas.route){
-            Siestas()
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        navController = navController, items = navigationItems
+                    )
+                }
+            ) {
+                Siestas()
+            }
         }
+
         composable(Destinations.Login.route) {
             val viewModel: LoginViewModel = hiltViewModel()
 
             if (viewModel.state.value.successLogin) {
                 LaunchedEffect(key1 = Unit) {
                     navController.navigate(
-                        Destinations.Alimentos.route
+                        Destinations.Home.route
                     ) {
                         popUpTo(Destinations.Login.route) {
                             inclusive = true
@@ -57,6 +100,7 @@ fun NavigationHost(
                 )
             }
         }
+
         composable(Destinations.Register.route){
             val viewModel: RegisterViewModel = hiltViewModel()
 
@@ -69,9 +113,17 @@ fun NavigationHost(
                 onDismissDialog = viewModel::hideErrorDialog
             )
         }
-        composable(Destinations.Home.route){
-            HomeScreen()
-        }
 
+        composable(Destinations.Home.route){
+            Scaffold(
+                bottomBar = {
+                    BottomNavigationBar(
+                        navController = navController, items = navigationItems
+                    )
+                }
+            ) {
+                HomeScreen()
+            }
+        }
     }
 }

@@ -46,22 +46,7 @@ fun MainScreen() {
 
     val navController = rememberNavController()
 
-    val navigationItems = listOf(
-        Destinations.Alimentos,
-        Destinations.Panales,
-        Destinations.Siestas,
-        Destinations.Otros,
-        Destinations.Home
-
-    )
-
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar(navController = navController, items = navigationItems)
-        }
-    ) {
-        NavigationHost(navController)
-    }
+    NavigationHost(navController)
 }
 
 @Preview(showBackground = true)
