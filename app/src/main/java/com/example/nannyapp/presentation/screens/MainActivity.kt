@@ -1,4 +1,4 @@
-package com.example.nannyapp.presentation.screens
+package com.example.nannyapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -41,13 +41,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NannyAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    MainScreen()
-                }
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colors.background
+//                ) {
+//                    MainScreen()
+//                }
 
                 val navController = rememberAnimatedNavController()
 
