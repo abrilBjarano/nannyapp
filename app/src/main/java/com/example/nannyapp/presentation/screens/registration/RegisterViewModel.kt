@@ -1,12 +1,11 @@
-package dev.leonardom.loginjetpackcompose.presentation.registration
+package com.example.nannyapp.presentation.screens.registration
 
 import android.util.Patterns
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nannyapp.presentation.screens.registration.RegisterState
-import dev.leonardom.loginjetpackcompose.R
+import com.example.nannyapp.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.presentation.registration
+package com.example.nannyapp.presentation.screens.registration
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -24,10 +24,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.example.nannyapp.presentation.screens.registration.RegisterState
-import dev.leonardom.loginjetpackcompose.presentation.components.EventDialog
-import dev.leonardom.loginjetpackcompose.presentation.components.RoundedButton
-import dev.leonardom.loginjetpackcompose.presentation.components.TransparentTextField
+import com.example.nannyapp.presentation.components.EventDialog
+import com.example.nannyapp.presentation.components.RoundedButton
+import com.example.nannyapp.presentation.components.TransparentTextField
 
 @Composable
 fun RegistrationScreen(
